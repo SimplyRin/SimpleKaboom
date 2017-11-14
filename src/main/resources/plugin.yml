@@ -1,0 +1,7 @@
+main: net.simplyrin.simplekaboom.SimpleKaboom
+name: SimpleKaboom
+version: 1.0.0
+author: SimplyRin
+commands:
+  kaboom:
+  lunch:
