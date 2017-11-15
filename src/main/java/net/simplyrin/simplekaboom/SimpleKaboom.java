@@ -15,7 +15,6 @@ import org.bukkit.util.Vector;
 public class SimpleKaboom extends JavaPlugin implements Listener {
 
 	private static SimpleKaboom plugin;
-
 	private static List<Player> list = new ArrayList<Player>();
 
 	@Override
@@ -28,14 +27,14 @@ public class SimpleKaboom extends JavaPlugin implements Listener {
 	public void onCommand(PlayerCommandPreprocessEvent event) {
 		Player sender = event.getPlayer();
 		String[] args = event.getMessage().split(" ");
-		if (args[0].equalsIgnoreCase("/lunch")) {
+		if (args[0].equalsIgnoreCase("/lunch") && sender.hasPermission("simplekaboom.command")) {
 			event.setCancelled(true);
 
 			kaboomPlayer(sender, false);
 			return;
 		}
 
-		if (args[0].equalsIgnoreCase("/kaboom") && sender.hasPermission("SimpleLunch.Punch")) {
+		if (args[0].equalsIgnoreCase("/kaboom") && sender.hasPermission("simplekaboom.command.admin")) {
 			event.setCancelled(true);
 
 			if (args.length > 1) {
