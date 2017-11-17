@@ -27,10 +27,15 @@ public class SimpleKaboom extends JavaPlugin implements Listener {
 	public void onCommand(PlayerCommandPreprocessEvent event) {
 		Player sender = event.getPlayer();
 		String[] args = event.getMessage().split(" ");
-		if (args[0].equalsIgnoreCase("/lunch") && sender.hasPermission("simplekaboom.command")) {
+
+		if (args[0].equalsIgnoreCase("/lunch") && sender.hasPermission("simplekaboom.command.lunch")) {
 			event.setCancelled(true);
 
-			kaboomPlayer(sender, false);
+			if(sender.hasPermission("simplekaboom.command.lunch.effect")) {
+				kaboomPlayer(sender, true);
+			} else {
+				kaboomPlayer(sender, false);
+			}
 			return;
 		}
 
@@ -65,10 +70,10 @@ public class SimpleKaboom extends JavaPlugin implements Listener {
 					}
 					return;
 				}
-				sender.sendMessage("§cPlayer is not online!");
+				sender.sendMessage(getPrefix() + "§cPlayer is not online!");
 				return;
 			}
-			sender.sendMessage("§cUsage: /kaboom <player>");
+			sender.sendMessage(getPrefix() + "§cUsage: /kaboom <player>");
 			return;
 		}
 	}
@@ -90,6 +95,10 @@ public class SimpleKaboom extends JavaPlugin implements Listener {
 		if(allowLightning) {
 			player.getWorld().strikeLightningEffect(player.getLocation());
 		}
+	}
+
+	public static String getPrefix() {
+		return "§7[§cSimpleKaboom§7] §r";
 	}
 
 }
