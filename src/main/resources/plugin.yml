@@ -1,7 +1,7 @@
-main: net.simplyrin.simplekaboom.SimpleKaboom
+main: net.simplyrin.simplekaboom.Main
 name: SimpleKaboom
-version: 1.0.0
+version: 1.1-SNAPSHOT
 author: SimplyRin
 commands:
   kaboom:
-  lunch:
+    usage: "/kaboom <player>"
