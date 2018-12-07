@@ -44,6 +44,10 @@ public class CommandKaboom implements CommandExecutor {
 			sender.sendMessage(this.plugin.getPrefix() + "§cYou don't have access to this command!");
 			return true;
 		}
+		
+		if (!(sender instanceof Player)) {
+			return;
+		}
 
 		if (args.length > 0) {
 			if (args[0].contains(",")) {
